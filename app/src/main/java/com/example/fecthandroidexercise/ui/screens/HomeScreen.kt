@@ -7,7 +7,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.fecthandroidexercise.R
 
 @Composable
 fun HomeScreen(
@@ -41,14 +43,24 @@ fun ResultScreen(items:String, modifier: Modifier= Modifier){
 
 @Composable
 fun LoadingScreen(modifier : Modifier = Modifier) {
-    Text(
-        text = "Loading Data"
-    )
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+    ) {
+        Text(
+            text = stringResource(R.string.loading_data_text)
+        )
+    }
 }
 
 @Composable
 fun ErrorScreen(modifier : Modifier = Modifier) {
-    Text(
-        text = "Error Try Again"
-    )
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+    ) {
+        Text(
+            text = stringResource(R.string.error_text)
+        )
+    }
 }
