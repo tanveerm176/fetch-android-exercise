@@ -15,22 +15,57 @@ import com.example.fetchandroidexercise.network.FetchItem
 import kotlinx.coroutines.launch
 import java.io.IOException
 
+/**
+ * Sealed interface representing different UI states for retrieving items.
+ */
 sealed interface FetchUiState{
+
+    /**
+     * Represents a successful retrieve operation with the Fetch items.
+     *
+     * @property items Map of retrieved items grouped by list ID.
+     */
     data class Success(val items: Map<Int, List<FetchItem>>) : FetchUiState
+
+    /**
+     * Represents an error state during the retrieve operation.
+     */
     object Error: FetchUiState
+
+    /**
+     * Represents a loading state during the retrieve operation.
+     */
     object Loading: FetchUiState
 }
 
+/**
+ * ViewModel for managing the retrieving and filtering of items.
+ *
+ * @property fetchItemRepository Repository for retrieving items.
+ */
 class FetchViewModel(
     private val fetchItemRepository: FetchItemsRepository
 ): ViewModel() {
+
+    /**
+     * Holds the current state of the retrieve operation.
+     */
     var fetchUiState: FetchUiState by mutableStateOf(FetchUiState.Loading)
         private set
 
+    /**
+     * Initializes the ViewModel and starts retrieving data
+     */
     init{
         getFetchData()
     }
 
+    /**
+     * Filters and groups the list of Fetch items.
+     *
+     * @param fetchListResult List of Fetch items to filter and group.
+     * @return Map of filtered and grouped items by list ID
+     */
     private fun filterList(fetchListResult: List<FetchItem>): Map<Int, List<FetchItem>> {
 
         val filteredList = fetchListResult.filter { !it.name.isNullOrBlank() }
@@ -41,6 +76,9 @@ class FetchViewModel(
 
     }
 
+    /**
+     * Retrieves data from the repository and updates the UI state.
+     */
     private fun getFetchData() {
         viewModelScope.launch{
             fetchUiState = try{
@@ -54,6 +92,9 @@ class FetchViewModel(
         }
     }
 
+    /**
+     * Factory for creating an instance of FetchViewModel with required dependencies.
+     */
     companion object{
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer{

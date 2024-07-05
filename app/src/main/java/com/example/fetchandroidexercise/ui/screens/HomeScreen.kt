@@ -10,9 +10,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.fetchandroidexercise.R
+import com.example.fetchandroidexercise.components.ErrorScreen
 import com.example.fetchandroidexercise.components.FetchItemsList
+import com.example.fetchandroidexercise.components.LoadingScreen
+import com.example.fetchandroidexercise.components.ResultScreen
 import com.example.fetchandroidexercise.network.FetchItem
 
+/**
+ * Composable function representing the home screen of the FetchItems application.
+ * Displays different screens based on the current state of `fetchUiState`.
+ *
+ * @param fetchUiState The current state of retrieving items, determining which screen to display.
+ * @param modifier Optional modifier for adjusting layout and styling.
+ * @param contentPadding Optional padding values for the content.
+ */
 @Composable
 fun HomeScreen(
     fetchUiState: FetchUiState,
@@ -30,34 +41,5 @@ fun HomeScreen(
             modifier = modifier.fillMaxWidth()
         )
 
-    }
-}
-
-@Composable
-fun ResultScreen(groupedItems: Map<Int, List<FetchItem>>, modifier: Modifier= Modifier){
-    FetchItemsList(groupedItems, modifier)
-}
-
-@Composable
-fun LoadingScreen(modifier : Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-    ) {
-        Text(
-            text = stringResource(R.string.loading_data_text)
-        )
-    }
-}
-
-@Composable
-fun ErrorScreen(modifier : Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-    ) {
-        Text(
-            text = stringResource(R.string.error_text)
-        )
     }
 }
