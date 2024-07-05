@@ -1,13 +1,16 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 package com.example.fecthandroidexercise.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
@@ -26,8 +29,9 @@ import com.example.fecthandroidexercise.ui.screens.HomeScreen
 fun FetchItemsApp() {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
-//        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = {FetchTopAppBar(scrollBehavior = scrollBehavior)}
+        topBar = {
+            FetchTopAppBar(scrollBehavior, modifier = Modifier)
+        }
     ) {
         Surface(
             modifier = Modifier.fillMaxSize()
@@ -37,7 +41,8 @@ fun FetchItemsApp() {
             )
             HomeScreen(
                 fetchUiState = fetchViewModel.fetchUiState,
-                contentPadding = it
+                contentPadding = it,
+                modifier = Modifier.padding(it)
             )
         }
 
