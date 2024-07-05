@@ -1,4 +1,4 @@
-package com.example.fetchandroidexercise.fake
+package com.example.fecthandroidexercise.fake
 
 import com.example.fecthandroidexercise.network.FetchItem
 
