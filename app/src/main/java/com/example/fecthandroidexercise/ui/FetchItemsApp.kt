@@ -21,11 +21,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fecthandroidexercise.R
 import com.example.fecthandroidexercise.ui.screens.HomeScreen
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FetchItemsApp() {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+//        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {FetchTopAppBar(scrollBehavior = scrollBehavior)}
     ) {
         Surface(

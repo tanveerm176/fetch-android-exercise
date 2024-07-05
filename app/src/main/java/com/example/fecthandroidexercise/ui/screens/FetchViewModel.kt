@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 
 sealed interface FetchUiState{
-    data class Success(val items: String) : FetchUiState
+    data class Success(val items: List<FetchItem>) : FetchUiState
     object Error: FetchUiState
     object Loading: FetchUiState
 }
@@ -31,24 +31,24 @@ class FetchViewModel(
         getFetchData()
     }
 
-    private fun getFetchData() {
-        viewModelScope.launch{
-            fetchUiState = try{
-                val fetchListResult = fetchItemRepository.getFetchItems()
-                val filteredList = filterList(fetchListResult)
-                FetchUiState.Success("${filteredList.size} Items")
-            }
-            catch (e:IOException){
-                FetchUiState.Error
-            }
-        }
-    }
-
     private fun filterList(fetchListResult: List<FetchItem>): List<FetchItem> {
 
         return fetchListResult.filter { !it.name.isNullOrBlank() }
             .sortedWith(compareBy({ it.listId }, { it.name }))
 
+    }
+
+    private fun getFetchData() {
+        viewModelScope.launch{
+            fetchUiState = try{
+                val fetchListResult = fetchItemRepository.getFetchItems()
+                val filteredList = filterList(fetchListResult)
+                FetchUiState.Success(filteredList)
+            }
+            catch (e:IOException){
+                FetchUiState.Error
+            }
+        }
     }
 
     companion object{
