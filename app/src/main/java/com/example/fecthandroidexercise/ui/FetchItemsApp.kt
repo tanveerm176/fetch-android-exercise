@@ -13,14 +13,16 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.fecthandroidexercise.ui.screens.FetchViewModel
 import com.example.fecthandroidexercise.ui.theme.FecthAndroidExerciseTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.fecthandroidexercise.R
 import com.example.fecthandroidexercise.ui.screens.HomeScreen
 
 @Composable
-fun FetchAndroidExerciseApp() {
+fun FetchItemsApp() {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -29,7 +31,9 @@ fun FetchAndroidExerciseApp() {
         Surface(
             modifier = Modifier.fillMaxSize()
         ){
-            val fetchViewModel: FetchViewModel = viewModel()
+            val fetchViewModel: FetchViewModel = viewModel(
+                factory = FetchViewModel.Factory
+            )
             HomeScreen(
                 fetchUiState = fetchViewModel.fetchUiState,
                 contentPadding = it
@@ -46,7 +50,7 @@ fun FetchTopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier= 
         scrollBehavior = scrollBehavior,
         title = {
             Text(
-                text = "Fetch Android Exercise",
+                text = stringResource(R.string.top_app_bar_title),
                 style = MaterialTheme.typography.headlineSmall
             )
         },
@@ -58,6 +62,6 @@ fun FetchTopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier= 
 @Composable
 fun FetchAndroidExerciseAppPreview(){
     FecthAndroidExerciseTheme{
-        FetchAndroidExerciseApp()
+        FetchItemsApp()
     }
 }

@@ -2,4 +2,5 @@
     <string name="app_name">FecthAndroidExercise</string>
     <string name="loading_data_text">Loading Data</string>
     <string name="error_text">Error Try Again</string>
+    <string name="top_app_bar_title">Fetch Items List</string>
 </resources>

@@ -1,14 +1,16 @@
 package com.example.fecthandroidexercise.ui.screens
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
-import com.example.fecthandroidexercise.data.NetworkFetchItemsRepository
-import com.example.fecthandroidexercise.network.FetchApi
-import com.example.fecthandroidexercise.ui.FetchAndroidExerciseApp
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.fecthandroidexercise.FetchItemsApplication
+import com.example.fecthandroidexercise.data.FetchItemRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -18,7 +20,9 @@ sealed interface FetchUiState{
     object Loading: FetchUiState
 }
 
-class FetchViewModel: ViewModel() {
+class FetchViewModel(
+    private val fetchItemRepository: FetchItemRepository
+): ViewModel() {
     var fetchUiState: FetchUiState by mutableStateOf(FetchUiState.Loading)
         private set
 
@@ -29,7 +33,6 @@ class FetchViewModel: ViewModel() {
     private fun getFetchData() {
         viewModelScope.launch{
             fetchUiState = try{
-                val fetchItemRepository = NetworkFetchItemsRepository()
                 val fetchListResult = fetchItemRepository.getFetchItems()
                 FetchUiState.Success("${fetchListResult} Items")
             }
@@ -37,6 +40,15 @@ class FetchViewModel: ViewModel() {
                 FetchUiState.Error
             }
         }
+    }
 
+    companion object{
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer{
+                val application = (this[APPLICATION_KEY] as FetchItemsApplication)
+                val fetchItemRepository = application.container.fetchItemsRepository
+                FetchViewModel(fetchItemRepository = fetchItemRepository)
+            }
+        }
     }
 }
