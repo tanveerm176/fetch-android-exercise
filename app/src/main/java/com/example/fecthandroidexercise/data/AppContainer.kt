@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 interface AppContainer {
-    val fetchItemsRepository: FetchItemRepository
+    val fetchItemsRepository: FetchItemsRepository
 }
 
 class DefaultAppContainer : AppContainer {
@@ -20,7 +20,7 @@ class DefaultAppContainer : AppContainer {
         retrofit.create(FetchApiService::class.java)
     }
 
-    override val fetchItemsRepository: FetchItemRepository by lazy {
+    override val fetchItemsRepository: FetchItemsRepository by lazy {
         NetworkFetchItemsRepository(retrofitService)
     }
 }

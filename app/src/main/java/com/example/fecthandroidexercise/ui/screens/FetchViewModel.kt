@@ -10,7 +10,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.fecthandroidexercise.FetchItemsApplication
-import com.example.fecthandroidexercise.data.FetchItemRepository
+import com.example.fecthandroidexercise.data.FetchItemsRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -21,7 +21,7 @@ sealed interface FetchUiState{
 }
 
 class FetchViewModel(
-    private val fetchItemRepository: FetchItemRepository
+    private val fetchItemRepository: FetchItemsRepository
 ): ViewModel() {
     var fetchUiState: FetchUiState by mutableStateOf(FetchUiState.Loading)
         private set
