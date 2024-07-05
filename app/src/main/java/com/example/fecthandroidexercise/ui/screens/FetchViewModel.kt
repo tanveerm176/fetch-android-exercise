@@ -11,6 +11,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.fecthandroidexercise.FetchItemsApplication
 import com.example.fecthandroidexercise.data.FetchItemsRepository
+import com.example.fecthandroidexercise.network.FetchItem
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -34,12 +35,20 @@ class FetchViewModel(
         viewModelScope.launch{
             fetchUiState = try{
                 val fetchListResult = fetchItemRepository.getFetchItems()
-                FetchUiState.Success("${fetchListResult} Items")
+                val filteredList = filterList(fetchListResult)
+                FetchUiState.Success("${filteredList.size} Items")
             }
             catch (e:IOException){
                 FetchUiState.Error
             }
         }
+    }
+
+    private fun filterList(fetchListResult: List<FetchItem>): List<FetchItem> {
+
+        return fetchListResult.filter { !it.name.isNullOrBlank() }
+            .sortedWith(compareBy({ it.listId }, { it.name }))
+
     }
 
     companion object{
