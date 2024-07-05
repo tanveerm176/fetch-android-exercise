@@ -47,7 +47,7 @@ fun FetchItemsList(groupedItems: Map<Int, List<FetchItem>>, modifier: Modifier =
 @Composable
 fun ListHeader(listId: Int){
     Text(
-        text = "List ID Section ${listId}",
+        text = "List ID Group ${listId}",
         fontSize = 20.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier
