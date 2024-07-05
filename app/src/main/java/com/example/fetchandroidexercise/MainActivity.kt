@@ -1,4 +1,4 @@
-package com.example.fecthandroidexercise
+package com.example.fetchandroidexercise
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,8 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.fecthandroidexercise.ui.FetchItemsApp
-import com.example.fecthandroidexercise.ui.theme.FecthAndroidExerciseTheme
+import com.example.fetchandroidexercise.ui.FetchItemsApp
+import com.example.fetchandroidexercise.ui.theme.FecthAndroidExerciseTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

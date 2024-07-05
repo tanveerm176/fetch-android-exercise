@@ -1,6 +1,6 @@
-package com.example.fecthandroidexercise.fake
+package com.example.fetchandroidexercise.fake
 
-import com.example.fecthandroidexercise.network.FetchItem
+import com.example.fetchandroidexercise.network.FetchItem
 
 object FakeDataSource {
     const val idOne = 100

@@ -1,10 +1,10 @@
-package com.example.fecthandroidexercise
+package com.example.fetchandroidexercise
 
-import com.example.fecthandroidexercise.ui.screens.FetchUiState
-import com.example.fecthandroidexercise.ui.screens.FetchViewModel
-import com.example.fecthandroidexercise.fake.FakeDataSource
-import com.example.fecthandroidexercise.fake.FakeNetworkFetchItemsRepository
-import com.example.fecthandroidexercise.rules.TestDispatcherRule
+import com.example.fetchandroidexercise.ui.screens.FetchUiState
+import com.example.fetchandroidexercise.ui.screens.FetchViewModel
+import com.example.fetchandroidexercise.fake.FakeDataSource
+import com.example.fetchandroidexercise.fake.FakeNetworkFetchItemsRepository
+import com.example.fetchandroidexercise.rules.TestDispatcherRule
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule

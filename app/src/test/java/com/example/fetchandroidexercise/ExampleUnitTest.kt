@@ -1,4 +1,4 @@
-package com.example.fecthandroidexercise
+package com.example.fetchandroidexercise
 
 import org.junit.Test
 

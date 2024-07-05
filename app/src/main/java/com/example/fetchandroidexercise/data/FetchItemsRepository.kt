@@ -1,7 +1,7 @@
-package com.example.fecthandroidexercise.data
+package com.example.fetchandroidexercise.data
 
-import com.example.fecthandroidexercise.network.FetchApiService
-import com.example.fecthandroidexercise.network.FetchItem
+import com.example.fetchandroidexercise.network.FetchApiService
+import com.example.fetchandroidexercise.network.FetchItem
 
 interface FetchItemsRepository {
     suspend fun getFetchItems(): List<FetchItem>

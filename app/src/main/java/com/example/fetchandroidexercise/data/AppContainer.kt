@@ -1,6 +1,6 @@
-package com.example.fecthandroidexercise.data
+package com.example.fetchandroidexercise.data
 
-import com.example.fecthandroidexercise.network.FetchApiService
+import com.example.fetchandroidexercise.network.FetchApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

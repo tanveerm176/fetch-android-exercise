@@ -1,8 +1,8 @@
-package com.example.fecthandroidexercise
+package com.example.fetchandroidexercise
 
-import com.example.fecthandroidexercise.data.NetworkFetchItemsRepository
-import com.example.fecthandroidexercise.fake.FakeDataSource
-import com.example.fecthandroidexercise.fake.FakeFetchApiService
+import com.example.fetchandroidexercise.data.NetworkFetchItemsRepository
+import com.example.fetchandroidexercise.fake.FakeDataSource
+import com.example.fetchandroidexercise.fake.FakeFetchApiService
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Test

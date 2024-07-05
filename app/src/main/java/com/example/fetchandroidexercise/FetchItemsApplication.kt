@@ -1,8 +1,8 @@
-package com.example.fecthandroidexercise
+package com.example.fetchandroidexercise
 
 import android.app.Application
-import com.example.fecthandroidexercise.data.AppContainer
-import com.example.fecthandroidexercise.data.DefaultAppContainer
+import com.example.fetchandroidexercise.data.AppContainer
+import com.example.fetchandroidexercise.data.DefaultAppContainer
 
 class FetchItemsApplication : Application(){
     lateinit var container: AppContainer

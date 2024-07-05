@@ -1,4 +1,4 @@
-package com.example.fecthandroidexercise.ui.screens
+package com.example.fetchandroidexercise.ui.screens
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -9,9 +9,9 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.fecthandroidexercise.FetchItemsApplication
-import com.example.fecthandroidexercise.data.FetchItemsRepository
-import com.example.fecthandroidexercise.network.FetchItem
+import com.example.fetchandroidexercise.FetchItemsApplication
+import com.example.fetchandroidexercise.data.FetchItemsRepository
+import com.example.fetchandroidexercise.network.FetchItem
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -38,12 +38,6 @@ class FetchViewModel(
         val groupedList = sortedList.groupBy { it.listId }
 
         return groupedList
-        /*
-
-            fetchListResult.filter { !it.name.isNullOrBlank() }
-            .sortedWith(compareBy({ it.listId }, { it.name }))
-
-        return filteredList.groupBy { it.listId }*/
 
     }
 

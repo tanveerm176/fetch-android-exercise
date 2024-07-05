@@ -1,4 +1,4 @@
-package com.example.fecthandroidexercise.ui.theme
+package com.example.fetchandroidexercise.ui.theme
 
 import android.app.Activity
 import android.os.Build

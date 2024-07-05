@@ -1,4 +1,4 @@
-package com.example.fecthandroidexercise.network
+package com.example.fetchandroidexercise.network
 
 import kotlinx.serialization.Serializable
 

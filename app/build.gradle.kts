@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.fecthandroidexercise"
+    namespace = "com.example.fetchandroidexercise"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.fecthandroidexercise"
+        applicationId = "com.example.fetchandroidexercise"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

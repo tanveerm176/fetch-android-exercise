@@ -1,4 +1,4 @@
-package com.example.fecthandroidexercise.rules
+package com.example.fetchandroidexercise.rules
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

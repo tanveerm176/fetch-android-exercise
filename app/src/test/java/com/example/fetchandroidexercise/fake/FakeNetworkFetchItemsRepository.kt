@@ -1,7 +1,7 @@
-package com.example.fecthandroidexercise.fake
+package com.example.fetchandroidexercise.fake
 
-import com.example.fecthandroidexercise.data.FetchItemsRepository
-import com.example.fecthandroidexercise.network.FetchItem
+import com.example.fetchandroidexercise.data.FetchItemsRepository
+import com.example.fetchandroidexercise.network.FetchItem
 
 class FakeNetworkFetchItemsRepository : FetchItemsRepository {
     override suspend fun getFetchItems(): List<FetchItem> {

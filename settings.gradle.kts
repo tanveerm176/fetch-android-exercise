@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FecthAndroidExercise"
+rootProject.name = "FetchAndroidExercise"
 include(":app")
  
