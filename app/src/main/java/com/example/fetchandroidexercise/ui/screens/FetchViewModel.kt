@@ -73,6 +73,7 @@ class FetchViewModel(
             compareBy<FetchItem> { it.listId }
                 .thenBy { item-> item.name.substringAfterLast(" ").toInt() }
         )
+        /*val sortedList = filteredList.sortedWith(compareBy({it.listId}, {it.name}))*/
         val groupedList = sortedList.groupBy { it.listId }
 
         return groupedList
