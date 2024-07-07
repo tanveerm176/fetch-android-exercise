@@ -69,7 +69,10 @@ class FetchViewModel(
     private fun filterList(fetchListResult: List<FetchItem>): Map<Int, List<FetchItem>> {
 
         val filteredList = fetchListResult.filter { !it.name.isNullOrBlank() }
-        val sortedList = filteredList.sortedWith(compareBy({it.listId}, {it.name}))
+        val sortedList = filteredList.sortedWith(
+            compareBy<FetchItem> { it.listId }
+                .thenBy { item-> item.name.substringAfterLast(" ").toInt() }
+        )
         val groupedList = sortedList.groupBy { it.listId }
 
         return groupedList
