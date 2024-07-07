@@ -65,7 +65,7 @@ fun ListHeader(listId: Int){
 @Composable
 fun FetchItemRow(item: FetchItem){
     Text(
-        text = "Item Name: ${item.name}",
+        text = "${item.name}",
         fontSize = 16.sp,
         modifier = Modifier
             .fillMaxWidth()
