@@ -1,4 +1,4 @@
-package com.example.fetchandroidexercise.components
+package com.example.fetchandroidexercise.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,57 +39,17 @@ fun FetchItemsList(groupedItems: Map<Int, List<FetchItem>>, modifier: Modifier =
     }
 }
 
-/**
- * Composable function that displays a header for a section based on list ID.
- *
- * @param listId The ID of the list for which the header is displayed.
- */
-@Composable
-fun ListHeader(listId: Int){
-    Text(
-        text = "List ID Group ${listId}",
-        fontSize = 20.sp,
-        fontWeight = FontWeight.Bold,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.secondaryContainer)
-            .padding(8.dp)
-    )
-}
-
-/**
- * Composable function that displays a row for a single FetchItem.
- *
- * @param item The FetchItem object to display in the row.
- */
-@Composable
-fun FetchItemRow(item: FetchItem){
-    Text(
-        text = "Name: ${item.name}",
-        fontSize = 16.sp,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.background)
-            .padding(16.dp)
-    )
-    Divider(color = Color.LightGray)
-}
-
 @Preview
 @Composable
-fun ListHeaderPreview(){
+fun FetchItemListPreview(){
     FetchAndroidExerciseTheme {
-        ListHeader(listId = 3)
+        val previewGroupedItems = mapOf(
+            1 to listOf(FetchItem(0, 1, "Item 0"), FetchItem(0, 1, "Item 4")),
+            2 to listOf(FetchItem(0, 1, "Item 0"), FetchItem(0, 1, "Item 4")),
+            3 to listOf(FetchItem(0, 1, "Item 0"), FetchItem(0, 1, "Item 4")),
+            4 to listOf(FetchItem(0, 1, "Item 0"), FetchItem(0, 1, "Item 4"))
+        )
+
+        FetchItemsList(groupedItems = previewGroupedItems)
     }
 }
-
-@Preview
-@Composable
-fun FetchItemPreview(){
-    FetchAndroidExerciseTheme {
-        val previewFetchItem = FetchItem(id = 1, listId = 1, name = "230")
-        FetchItemRow(previewFetchItem)
-    }
-}
-
-/*TODO: Implement preview for list*/

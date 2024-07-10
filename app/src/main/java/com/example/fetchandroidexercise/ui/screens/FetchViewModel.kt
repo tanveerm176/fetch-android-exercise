@@ -1,5 +1,6 @@
 package com.example.fetchandroidexercise.ui.screens
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -75,6 +76,11 @@ class FetchViewModel(
         )
         /*val sortedList = filteredList.sortedWith(compareBy({it.listId}, {it.name}))*/
         val groupedList = sortedList.groupBy { it.listId }
+
+        //Verify number of items after filter, sort and group
+        //Should be 320
+        /*val total_size = groupedList.values.sumOf { it.size }
+        Log.d("number of items", "${total_size}")*/
 
         return groupedList
 
