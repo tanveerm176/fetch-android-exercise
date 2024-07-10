@@ -1,7 +1,8 @@
-package com.example.fetchandroidexercise.components
+package com.example.fetchandroidexercise.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.fetchandroidexercise.ui.components.FetchItemsList
 import com.example.fetchandroidexercise.network.FetchItem
 
 /**

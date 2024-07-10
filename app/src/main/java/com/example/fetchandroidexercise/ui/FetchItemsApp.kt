@@ -84,7 +84,7 @@ fun FetchTopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier= 
 
 @Preview
 @Composable
-fun FetchAndroidExerciseAppPreview(){
+fun TopAppBarPreview(){
     FetchAndroidExerciseTheme {
         val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
         FetchTopAppBar(scrollBehavior)
