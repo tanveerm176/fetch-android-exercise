@@ -1,7 +1,7 @@
 package com.example.fetchandroidexercise
 
-import com.example.fetchandroidexercise.ui.screens.FetchUiState
-import com.example.fetchandroidexercise.ui.screens.FetchViewModel
+import com.example.fetchandroidexercise.ui.FetchUiState
+import com.example.fetchandroidexercise.ui.FetchViewModel
 import com.example.fetchandroidexercise.fake.FakeDataSource
 import com.example.fetchandroidexercise.fake.FakeNetworkFetchItemsRepository
 import com.example.fetchandroidexercise.rules.TestDispatcherRule

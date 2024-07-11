@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.fetchandroidexercise.ui.screens.FetchViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fetchandroidexercise.R
 import com.example.fetchandroidexercise.ui.screens.HomeScreen
