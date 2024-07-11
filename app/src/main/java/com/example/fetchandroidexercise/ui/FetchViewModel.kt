@@ -1,6 +1,5 @@
-package com.example.fetchandroidexercise.ui.screens
+package com.example.fetchandroidexercise.ui
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -16,28 +15,7 @@ import com.example.fetchandroidexercise.network.FetchItem
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-/**
- * Sealed interface representing different UI states for retrieving items.
- */
-sealed interface FetchUiState{
 
-    /**
-     * Represents a successful retrieve operation with the Fetch items.
-     *
-     * @property items Map of retrieved items grouped by list ID.
-     */
-    data class Success(val items: Map<Int, List<FetchItem>>) : FetchUiState
-
-    /**
-     * Represents an error state during the retrieve operation.
-     */
-    object Error: FetchUiState
-
-    /**
-     * Represents a loading state during the retrieve operation.
-     */
-    object Loading: FetchUiState
-}
 
 /**
  * ViewModel for managing the retrieving and filtering of items.
