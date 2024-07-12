@@ -10,6 +10,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -32,7 +33,10 @@ fun FetchItemsList(groupedItems: Map<Int, List<FetchItem>>, modifier: Modifier =
             item{
                 ListHeader(listId)
             }
-            items(items) { item ->
+            items(
+                items,
+                key =  {it.id}
+            ) { item ->
                 FetchItemRow(item)
             }
         }
