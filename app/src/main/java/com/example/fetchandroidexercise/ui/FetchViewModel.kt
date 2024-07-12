@@ -1,5 +1,7 @@
 package com.example.fetchandroidexercise.ui
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -9,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import coil.network.HttpException
 import com.example.fetchandroidexercise.FetchItemsApplication
 import com.example.fetchandroidexercise.data.FetchItemsRepository
 import com.example.fetchandroidexercise.network.FetchItem
@@ -75,6 +78,11 @@ class FetchViewModel(
                 FetchUiState.Success(filteredList)
             }
             catch (e:IOException){
+                Log.d("IO Exception", "${e.message}")
+                FetchUiState.Error
+            }
+            catch(e: HttpException){
+                Log.d("Http Exception","${e.message}")
                 FetchUiState.Error
             }
         }
