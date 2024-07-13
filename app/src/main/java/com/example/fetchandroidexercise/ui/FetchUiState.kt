@@ -17,10 +17,10 @@ sealed interface FetchUiState{
     /**
      * Represents an error state during the retrieve operation.
      */
-    object Error: FetchUiState
+    data object Error: FetchUiState
 
     /**
      * Represents a loading state during the retrieve operation.
      */
-    object Loading: FetchUiState
+    data object Loading: FetchUiState
 }

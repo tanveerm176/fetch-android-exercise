@@ -14,7 +14,9 @@ import coil.network.HttpException
 import com.example.fetchandroidexercise.FetchItemsApplication
 import com.example.fetchandroidexercise.data.FetchItemsRepository
 import com.example.fetchandroidexercise.data.FetchItem
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.IOException
 
 
@@ -41,30 +43,7 @@ class FetchViewModel(
         getFetchData()
     }
 
-    /**
-     * Filters and groups the list of Fetch items.
-     *
-     * @param fetchListResult List of Fetch items to filter and group.
-     * @return Map of filtered and grouped items by list ID
-     */
-    private fun filterList(fetchListResult: List<FetchItem>): Map<Int, List<FetchItem>> {
 
-        val filteredList = fetchListResult.filter { !it.name.isNullOrBlank() }
-        val sortedList = filteredList.sortedWith(
-            compareBy<FetchItem> { it.listId }
-                .thenBy { item-> item.name?.substringAfterLast(" ")?.toInt() }
-        )
-        /*val sortedList = filteredList.sortedWith(compareBy({it.listId}, {it.name}))*/
-        val groupedList = sortedList.groupBy { it.listId }
-
-        //Verify number of items after filter, sort and group
-        //Should be 320
-        /*val total_size = groupedList.values.sumOf { it.size }
-        Log.d("number of items", "${total_size}")*/
-
-        return groupedList
-
-    }
 
     /**
      * Retrieves data from the repository and updates the UI state.
@@ -73,7 +52,12 @@ class FetchViewModel(
         viewModelScope.launch{
             fetchUiState = try{
                 val fetchListResult = fetchItemRepository.getFetchItems()
-                val filteredList = filterList(fetchListResult)
+
+                // Added coroutine to filterList() to ensure it does not freeze UI
+                // In case filtering is expensive in the future (for scalability)
+                val filteredList = withContext(Dispatchers.Default){
+                    fetchItemRepository.filterList(fetchListResult)
+                }
                 FetchUiState.Success(filteredList)
             }
             catch (e:IOException){
