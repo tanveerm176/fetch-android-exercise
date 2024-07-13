@@ -2,7 +2,7 @@ package com.example.fetchandroidexercise.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.fetchandroidexercise.ui.components.FetchItemsList
+import com.example.fetchandroidexercise.ui.components.ItemsList
 import com.example.fetchandroidexercise.network.FetchItem
 
 /**
@@ -13,5 +13,5 @@ import com.example.fetchandroidexercise.network.FetchItem
  */
 @Composable
 fun ResultScreen(groupedItems: Map<Int, List<FetchItem>>, modifier: Modifier = Modifier){
-    FetchItemsList(groupedItems, modifier)
+    ItemsList(groupedItems, modifier)
 }

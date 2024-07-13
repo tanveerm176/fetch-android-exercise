@@ -21,7 +21,7 @@ import com.example.fetchandroidexercise.ui.theme.FetchAndroidExerciseTheme
  * @param item The FetchItem object to display in the row.
  */
 @Composable
-fun FetchItemRow(item: FetchItem){
+fun ItemRow(item: FetchItem){
     Text(
         text = "Name: ${item.name}",
         fontSize = 16.sp,
@@ -35,9 +35,9 @@ fun FetchItemRow(item: FetchItem){
 
 @Preview
 @Composable
-fun FetchItemPreview(){
+fun ItemRowPreview(){
     FetchAndroidExerciseTheme {
         val previewFetchItem = FetchItem(id = 1, listId = 1, name = "230")
-        FetchItemRow(previewFetchItem)
+        ItemRow(previewFetchItem)
     }
 }
