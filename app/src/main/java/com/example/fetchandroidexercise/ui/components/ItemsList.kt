@@ -24,6 +24,7 @@ fun ItemsList(groupedItems: Map<Int, List<FetchItem>>, modifier: Modifier = Modi
             }
             items(
                 items,
+                /*unique identifier for optimization and state preservation*/
                 key =  {it.id}
             ) { item ->
                 ItemRow(item)
