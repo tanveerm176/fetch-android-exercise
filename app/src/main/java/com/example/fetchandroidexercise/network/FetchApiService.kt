@@ -1,5 +1,6 @@
 package com.example.fetchandroidexercise.network
 
+import com.example.fetchandroidexercise.data.FetchItem
 import retrofit2.http.GET
 
 /**

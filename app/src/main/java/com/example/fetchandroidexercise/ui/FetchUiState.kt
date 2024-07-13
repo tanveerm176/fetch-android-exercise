@@ -1,6 +1,6 @@
 package com.example.fetchandroidexercise.ui
 
-import com.example.fetchandroidexercise.network.FetchItem
+import com.example.fetchandroidexercise.data.FetchItem
 
 /**
  * Sealed interface representing different UI states for retrieving items.

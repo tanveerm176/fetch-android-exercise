@@ -3,7 +3,7 @@ package com.example.fetchandroidexercise.ui.screens
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.fetchandroidexercise.ui.components.ItemsList
-import com.example.fetchandroidexercise.network.FetchItem
+import com.example.fetchandroidexercise.data.FetchItem
 
 /**
  * Composable function representing the screen displaying retrieved items.
