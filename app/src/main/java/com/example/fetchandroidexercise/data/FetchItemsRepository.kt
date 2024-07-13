@@ -1,7 +1,6 @@
 package com.example.fetchandroidexercise.data
 
 import com.example.fetchandroidexercise.network.FetchApiService
-import com.example.fetchandroidexercise.network.FetchItem
 
 /**
  * Repository interface for fetching items.

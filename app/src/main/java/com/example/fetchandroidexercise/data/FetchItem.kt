@@ -1,4 +1,4 @@
-package com.example.fetchandroidexercise.network
+package com.example.fetchandroidexercise.data
 
 import kotlinx.serialization.Serializable
 

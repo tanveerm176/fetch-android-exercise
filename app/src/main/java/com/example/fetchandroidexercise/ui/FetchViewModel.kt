@@ -1,6 +1,5 @@
 package com.example.fetchandroidexercise.ui
 
-import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -14,7 +13,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import coil.network.HttpException
 import com.example.fetchandroidexercise.FetchItemsApplication
 import com.example.fetchandroidexercise.data.FetchItemsRepository
-import com.example.fetchandroidexercise.network.FetchItem
+import com.example.fetchandroidexercise.data.FetchItem
 import kotlinx.coroutines.launch
 import java.io.IOException
 
