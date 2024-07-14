@@ -21,7 +21,7 @@ import com.example.fetchandroidexercise.ui.components.TopAppBar
 @Composable
 fun MainScreen() {
     // Defines the scroll behavior for the top app bar
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
     Scaffold(
         topBar = {
