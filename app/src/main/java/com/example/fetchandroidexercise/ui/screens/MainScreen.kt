@@ -2,6 +2,7 @@
 
 package com.example.fetchandroidexercise.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,8 +19,12 @@ import com.example.fetchandroidexercise.ui.components.SearchBar
 import com.example.fetchandroidexercise.ui.components.TopAppBar
 
 /**
- * Composable function representing the main UI of the FetchItems application.
- * Uses Jetpack Compose Scaffold and Surface to structure the UI with a top app bar and content area.
+ * Composable function that displays the Main screen with a top app bar and content area.
+ *
+ * Defines the scroll behavior for the top app bar and uses a `FetchViewModel` to handle data
+ * for the UI.
+ *
+ * This screen contains a search bar and a home screen that displays data based on the search query.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,7 +46,9 @@ fun MainScreen() {
                 .padding(innerPadding)
         ) {
             Column {
-                SearchBar()
+                SearchBar(searchForItem = { searchQuery ->
+                    fetchViewModel.searchItem(searchQuery)
+                })
 
                 //Display HomeScreen with fetchUiState
                 HomeScreen(

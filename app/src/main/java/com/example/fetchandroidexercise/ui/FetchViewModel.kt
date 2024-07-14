@@ -1,6 +1,7 @@
 package com.example.fetchandroidexercise.ui
 
 import android.util.Log
+import androidx.compose.runtime.currentCompositionErrors
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -12,13 +13,13 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import coil.network.HttpException
 import com.example.fetchandroidexercise.FetchItemsApplication
+import com.example.fetchandroidexercise.data.FetchItem
 import com.example.fetchandroidexercise.data.FetchItemsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
-
 
 
 /**
@@ -28,7 +29,7 @@ import java.io.IOException
  */
 class FetchViewModel(
     private val fetchItemRepository: FetchItemsRepository
-): ViewModel() {
+) : ViewModel() {
 
     /**
      * Holds the current state of the retrieve operation.
@@ -36,55 +37,79 @@ class FetchViewModel(
     var fetchUiState: FetchUiState by mutableStateOf(FetchUiState.Loading)
         private set
 
+    private var currentItemsList: Map<Int, List<FetchItem>> = emptyMap()
+
     /**
      * Initializes the ViewModel and starts retrieving data
      */
-    init{
+    init {
         getFetchData()
     }
-
 
 
     /**
      * Retrieves data from the repository and updates the UI state.
      */
     private fun getFetchData() {
-        viewModelScope.launch{
+        viewModelScope.launch {
             delay(3000)
-            fetchUiState = try{
+            fetchUiState = try {
                 val fetchListResult = fetchItemRepository.getFetchItems()
-
-                // Added coroutine to filterList() to ensure it does not freeze UI
-                // In case filtering is expensive in the future (for scalability)
-                // Default since it is a CPU bound task
-                val filteredList = withContext(Dispatchers.Default){
-                    fetchItemRepository.filterItems(fetchListResult)
-                }
-                FetchUiState.Success(filteredList)
-            }
-            catch (e:IOException){
+                currentItemsList = fetchItemRepository.filterItems(fetchListResult)
+                FetchUiState.Success(currentItemsList)
+            } catch (e: IOException) {
                 Log.d("IO Exception", "${e.message}")
                 FetchUiState.Error(e)
-            }
-            catch(e: HttpException){
-                Log.d("Http Exception","${e.message}")
+            } catch (e: HttpException) {
+                Log.d("Http Exception", "${e.message}")
                 FetchUiState.Error(e)
             }
         }
     }
 
     /**
-     * onRefresh function to refresh API call in case error screen is shown
-     * */
-    fun onRefresh() = getFetchData()
+     * Filters items based on the search query.
+     *
+     * @param searchText The text to filter items by.
+     */
+    fun searchItem(searchText: String) {
+        viewModelScope.launch {
+            fetchUiState = try {
+                if (searchText.isEmpty()) {
+                    FetchUiState.Success(currentItemsList)
+                } else {
+                    val searchItemsList = currentItemsList.mapValues { (_, itemList) ->
+                        itemList.filter { item ->
+                            item.name?.contains(searchText, ignoreCase = true) ?: false
+                        }
+
+                    }
+                    FetchUiState.Success(searchItemsList)
+                }
+            } catch (e: Exception) {
+                Log.d("Search Exception", "${e.message}")
+                FetchUiState.Error(e)
+            }
+
+        }
+    }
+
+    /**
+     * Refreshes data by re-triggering the data retrieval process.
+     */
+    fun onRefresh() {
+        getFetchData()
+    }
 
     /**
      * Factory for creating an instance of FetchViewModel with required dependencies,
-     * in this case is the FetchItemsRepository. This is a form of dependency injection.
+     * in this case is the FetchItemsRepository.
+     * Provides a FetchItemsRepository instance to the ViewModel.
+     * This is a form of dependency injection.
      */
-    companion object{
+    companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer{
+            initializer {
                 val application = (this[APPLICATION_KEY] as FetchItemsApplication)
                 val fetchItemRepository = application.container.fetchItemsRepository
                 FetchViewModel(fetchItemRepository = fetchItemRepository)

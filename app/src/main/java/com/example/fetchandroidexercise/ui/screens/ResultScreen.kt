@@ -12,11 +12,14 @@ import com.example.fetchandroidexercise.data.FetchItem
 import com.example.fetchandroidexercise.ui.components.RefreshButton
 
 /**
- * Composable function representing the screen displaying retrieved items.
- *
- * @param groupedItems Map of items grouped by list ID to display.
- * @param modifier Optional modifier for adjusting layout and styling.
- */
+* Composable function representing the screen displaying retrieved items.
+*
+* @param groupedItems Map of items grouped by list ID to display.
+* @param modifier Optional modifier for adjusting layout and styling.
+* @param onRefresh Function invoked when the refresh button is clicked.
+*
+* The screen contains a list of grouped items and a refresh button positioned at the bottom end.
+*/
 @Composable
 fun ResultScreen(
     groupedItems: Map<Int, List<FetchItem>>,
@@ -30,7 +33,7 @@ fun ResultScreen(
             onRefresh,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(vertical = 56.dp, horizontal = 16.dp)
+                .padding(vertical = 16.dp, horizontal = 16.dp)
         )
     }
 }
