@@ -18,5 +18,13 @@ The following is required to run the app:
 * Android Device or Emulator with API Version 34 or min API Version 24
 * Java Version 1.8
 
-## Demo
+## Demos
+#### Version 1: MVP with basic functionality: 
+* Retrieve data from API call, filter & group data, and display data in a list
+  
 ![](https://github.com/tanveerm176/fetch-android-exercise/blob/main/FetchAndroidExercise-Demo.gif)
+
+#### Version 2: Added functionality:
+* Button to refresh API call and search for item functionality
+  
+![](https://github.com/tanveerm176/fetch-android-exercise/blob/main/FetchAndroidExercise-Demo-v2.gif)
