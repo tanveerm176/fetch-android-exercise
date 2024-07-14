@@ -2,6 +2,7 @@ package com.example.fetchandroidexercise.ui.screens
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -25,14 +26,21 @@ fun HomeScreen(
 ) {
     when(fetchUiState){
         is FetchUiState.Success -> ResultScreen(
-            fetchUiState.items, modifier = modifier.fillMaxWidth(),
+            fetchUiState.items,
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(contentPadding),
             onRefresh = onRefresh
         )
         is FetchUiState.Loading -> LoadingScreen(
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(contentPadding)
         )
         is FetchUiState.Error -> ErrorScreen(
-            modifier = modifier.fillMaxWidth(),
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(contentPadding),
             onRefresh = onRefresh
         )
 
