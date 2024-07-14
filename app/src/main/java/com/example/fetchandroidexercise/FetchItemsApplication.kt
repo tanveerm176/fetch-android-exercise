@@ -1,8 +1,8 @@
 package com.example.fetchandroidexercise
 
 import android.app.Application
-import com.example.fetchandroidexercise.data.AppContainer
-import com.example.fetchandroidexercise.data.DefaultAppContainer
+import com.example.fetchandroidexercise.di.AppContainer
+import com.example.fetchandroidexercise.di.DefaultAppContainer
 
 /**
  * Custom Application class for initializing the application-wide dependencies.

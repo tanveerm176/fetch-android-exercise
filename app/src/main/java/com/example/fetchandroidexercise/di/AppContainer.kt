@@ -1,5 +1,7 @@
-package com.example.fetchandroidexercise.data
+package com.example.fetchandroidexercise.di
 
+import com.example.fetchandroidexercise.data.FetchItemsRepository
+import com.example.fetchandroidexercise.data.NetworkFetchItemsRepository
 import com.example.fetchandroidexercise.network.FetchApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
