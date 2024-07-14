@@ -12,7 +12,7 @@ interface FetchItemsRepository {
      * @return List of FetchItem objects*/
     suspend fun getFetchItems(): List<FetchItem>
 
-    suspend fun filterList(fetchListResult: List<FetchItem>): Map<Int, List<FetchItem>>
+    suspend fun filterItems(fetchListResult: List<FetchItem>): Map<Int, List<FetchItem>>
 }
 
 /**
@@ -40,7 +40,7 @@ class NetworkFetchItemsRepository(
      */
     // Moved to repository from ViewModel to ensure separation of concerns
     // Repositories should conduct business logic and data manipulation
-    override suspend fun filterList(fetchListResult: List<FetchItem>): Map<Int,
+    override suspend fun filterItems(fetchListResult: List<FetchItem>): Map<Int,
             List<FetchItem>> {
 
         val filteredList = fetchListResult.filter { !it.name.isNullOrBlank() }

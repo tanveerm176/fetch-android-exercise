@@ -17,7 +17,7 @@ sealed interface FetchUiState{
     /**
      * Represents an error state during the retrieve operation.
      */
-    data object Error: FetchUiState
+    data class Error(val throwable: Throwable): FetchUiState
 
     /**
      * Represents a loading state during the retrieve operation.

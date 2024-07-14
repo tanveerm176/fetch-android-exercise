@@ -1,6 +1,7 @@
 package com.example.fetchandroidexercise.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,6 +21,7 @@ import com.example.fetchandroidexercise.R
 import com.example.fetchandroidexercise.data.FetchItemsRepository
 import com.example.fetchandroidexercise.ui.FetchUiState
 import com.example.fetchandroidexercise.ui.FetchViewModel
+import com.example.fetchandroidexercise.ui.components.RefreshButton
 import com.example.fetchandroidexercise.ui.theme.FetchAndroidExerciseTheme
 
 /**
@@ -28,7 +30,7 @@ import com.example.fetchandroidexercise.ui.theme.FetchAndroidExerciseTheme
  * @param modifier Optional modifier for adjusting layout and styling.
  */
 @Composable
-fun ErrorScreen(modifier : Modifier = Modifier/*, fetchUiState: FetchUiState*/) {
+fun ErrorScreen(modifier: Modifier = Modifier, onRefresh: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -47,19 +49,17 @@ fun ErrorScreen(modifier : Modifier = Modifier/*, fetchUiState: FetchUiState*/) 
             modifier = Modifier.padding(vertical = 10.dp)
         )
 
-        /*Button(
-            onClick = { *//*TO DO*//* },
-            modifier = Modifier.padding(vertical = 5.dp)
-        ) {
-            Text(text = "Refresh")
-        }*/
+        RefreshButton(onRefresh)
+
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ErrorScreenPreview(){
+fun ErrorScreenPreview() {
     FetchAndroidExerciseTheme {
-        ErrorScreen()
+        ErrorScreen {
+
+        }
     }
 }

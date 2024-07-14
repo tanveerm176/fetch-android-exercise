@@ -13,8 +13,8 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import coil.network.HttpException
 import com.example.fetchandroidexercise.FetchItemsApplication
 import com.example.fetchandroidexercise.data.FetchItemsRepository
-import com.example.fetchandroidexercise.data.FetchItem
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
@@ -50,26 +50,33 @@ class FetchViewModel(
      */
     private fun getFetchData() {
         viewModelScope.launch{
+            delay(3000)
             fetchUiState = try{
                 val fetchListResult = fetchItemRepository.getFetchItems()
 
                 // Added coroutine to filterList() to ensure it does not freeze UI
                 // In case filtering is expensive in the future (for scalability)
+                // Default since it is a CPU bound task
                 val filteredList = withContext(Dispatchers.Default){
-                    fetchItemRepository.filterList(fetchListResult)
+                    fetchItemRepository.filterItems(fetchListResult)
                 }
                 FetchUiState.Success(filteredList)
             }
             catch (e:IOException){
                 Log.d("IO Exception", "${e.message}")
-                FetchUiState.Error
+                FetchUiState.Error(e)
             }
             catch(e: HttpException){
                 Log.d("Http Exception","${e.message}")
-                FetchUiState.Error
+                FetchUiState.Error(e)
             }
         }
     }
+
+    /**
+     * onRefresh function to refresh API call in case error screen is shown
+     * */
+    fun onRefresh() = getFetchData()
 
     /**
      * Factory for creating an instance of FetchViewModel with required dependencies,

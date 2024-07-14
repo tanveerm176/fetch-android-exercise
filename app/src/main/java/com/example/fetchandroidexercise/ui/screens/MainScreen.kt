@@ -39,11 +39,13 @@ fun MainScreen() {
             HomeScreen(
                 fetchUiState = fetchViewModel.fetchUiState,
                 contentPadding = it,
-                modifier = Modifier.padding(it)
+                modifier = Modifier.padding(it),
+                onRefresh = {fetchViewModel.onRefresh()}
             )
         }
 
     }
 }
+
 
 

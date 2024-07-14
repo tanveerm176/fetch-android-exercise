@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.fetchandroidexercise.ui.FetchUiState
+import com.example.fetchandroidexercise.ui.FetchViewModel
 
 /**
  * Composable function representing the home screen of the FetchItems application.
@@ -19,17 +20,20 @@ import com.example.fetchandroidexercise.ui.FetchUiState
 fun HomeScreen(
     fetchUiState: FetchUiState,
     modifier: Modifier = Modifier,
+    onRefresh: () -> Unit,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
     when(fetchUiState){
         is FetchUiState.Success -> ResultScreen(
-            fetchUiState.items, modifier = modifier.fillMaxWidth()
+            fetchUiState.items, modifier = modifier.fillMaxWidth(),
+            onRefresh = onRefresh
         )
         is FetchUiState.Loading -> LoadingScreen(
             modifier = modifier.fillMaxWidth()
         )
         is FetchUiState.Error -> ErrorScreen(
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth(),
+            onRefresh = onRefresh
         )
 
     }
