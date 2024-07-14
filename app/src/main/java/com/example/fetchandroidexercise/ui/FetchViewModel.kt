@@ -72,7 +72,8 @@ class FetchViewModel(
     }
 
     /**
-     * Factory for creating an instance of FetchViewModel with required dependencies.
+     * Factory for creating an instance of FetchViewModel with required dependencies,
+     * in this case is the FetchItemsRepository. This is a form of dependency injection.
      */
     companion object{
         val Factory: ViewModelProvider.Factory = viewModelFactory {

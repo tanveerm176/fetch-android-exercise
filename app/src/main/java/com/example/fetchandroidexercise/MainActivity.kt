@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.fetchandroidexercise.ui.FetchItemsApp
+import com.example.fetchandroidexercise.ui.screens.MainScreen
 import com.example.fetchandroidexercise.ui.theme.FetchAndroidExerciseTheme
 
 /**
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), // Fill entire screen
                 ) {
-                    FetchItemsApp() // Displays the FetchItemsApp composable content
+                    MainScreen() // Displays the FetchItemsApp composable content
                 }
             }
         }

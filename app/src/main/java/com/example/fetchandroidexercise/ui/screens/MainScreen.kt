@@ -1,5 +1,5 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
-package com.example.fetchandroidexercise.ui
+package com.example.fetchandroidexercise.ui.screens
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -10,8 +10,8 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.fetchandroidexercise.ui.FetchViewModel
 import com.example.fetchandroidexercise.ui.components.TopAppBar
-import com.example.fetchandroidexercise.ui.screens.HomeScreen
 
 /**
  * Composable function representing the main UI of the FetchItems application.
@@ -19,7 +19,7 @@ import com.example.fetchandroidexercise.ui.screens.HomeScreen
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FetchItemsApp() {
+fun MainScreen() {
     // Defines the scroll behavior for the top app bar
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
