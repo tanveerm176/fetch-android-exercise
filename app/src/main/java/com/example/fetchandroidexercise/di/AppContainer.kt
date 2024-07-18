@@ -15,11 +15,13 @@ interface AppContainer {
 
 /**
 * Default implementation of [AppContainer] that provides dependencies using Retrofit
+ *  implements the singleton pattern, which ensures only one instance of the object is  created
+ *  and used across the entire application.
  * */
-class DefaultAppContainer : AppContainer {
+object DefaultAppContainer : AppContainer {
 
     //Base URL for the API call
-    private val baseUrl = "https://fetch-hiring.s3.amazonaws.com"
+    private const val baseUrl = "https://fetch-hiring.s3.amazonaws.com"
 
     //Retrofit instance configured with GsonConverterFactory
     private val retrofit = Retrofit.Builder()
@@ -28,7 +30,7 @@ class DefaultAppContainer : AppContainer {
         .build()
 
     //Lazy-init Retrofit service instance for FetchApiService
-    val retrofitService: FetchApiService by lazy{
+    private val retrofitService: FetchApiService by lazy{
         retrofit.create(FetchApiService::class.java)
     }
 

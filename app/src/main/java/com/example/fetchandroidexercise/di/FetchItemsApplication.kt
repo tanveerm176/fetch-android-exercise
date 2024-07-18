@@ -1,8 +1,6 @@
-package com.example.fetchandroidexercise
+package com.example.fetchandroidexercise.di
 
 import android.app.Application
-import com.example.fetchandroidexercise.di.AppContainer
-import com.example.fetchandroidexercise.di.DefaultAppContainer
 
 /**
  * Custom Application class for initializing the application-wide dependencies.
@@ -19,6 +17,6 @@ class FetchItemsApplication : Application(){
      */
     override fun onCreate() {
         super.onCreate()
-        container = DefaultAppContainer()
+        container = DefaultAppContainer
     }
 }

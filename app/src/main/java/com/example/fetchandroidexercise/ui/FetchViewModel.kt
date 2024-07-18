@@ -1,7 +1,6 @@
 package com.example.fetchandroidexercise.ui
 
 import android.util.Log
-import androidx.compose.runtime.currentCompositionErrors
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -12,13 +11,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import coil.network.HttpException
-import com.example.fetchandroidexercise.FetchItemsApplication
+import com.example.fetchandroidexercise.di.FetchItemsApplication
 import com.example.fetchandroidexercise.data.FetchItem
 import com.example.fetchandroidexercise.data.FetchItemsRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.IOException
 
 
